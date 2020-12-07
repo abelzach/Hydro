@@ -40,7 +40,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
       const networkId = await web3.eth.net.getId()
       const networkData = Hydrochain.networks[networkId]
       if(networkData) {
-        const hydroChain = web3.eth.Contract(Hydrochain.abi, networkData.address)
+        const hydroChain = new web3.eth.Contract(Hydrochain.abi, networkData.address)
         this.setState({ hydroChain })
         const uCount = await hydroChain.methods.uCount().call()
         this.setState({ uCount })
